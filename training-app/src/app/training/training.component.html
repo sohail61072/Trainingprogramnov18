@@ -1,0 +1,63 @@
+<h1>Training Details</h1>
+
+<table class="table table-hover">
+  <tr>
+    <th>Training ID</th>
+    <th>Training Name</th>
+    <th>Date</th>
+    <th>Location</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let tr of trainings; let i = index">
+    <td>{{tr.trainingId}}</td>
+    <td>{{tr.coursename}}</td>
+    <td>{{tr.date}}</td>
+    <td>{{tr.location}}</td>
+    <td><button class="btn btn-danger" (click)="deleteTraining(tr.trainingId)">x</button></td>
+    <td><button class="btn btn-danger" (click)="getTrainingParticipants(tr.trainingId)">Show Participants</button></td>
+</table>
+<table class="table table-hover">
+    <tr>
+      <th>Participant ID</th>
+      <th>Participant Name</th>
+
+    </tr>
+    <tr *ngFor="let pr of participants; let i = index">
+      <td>{{pr.participantId}}</td>
+      <td>{{pr.name}}</td>
+  </table>
+
+
+<h3> Add new courses</h3>
+<div class="form-group">
+<form (submit)="addNewTraining({trainingId:0,coursename:cname.value,date:date.value,location:location.value})">
+    <tr>
+      <td><input class="form-control" placeholder="coursename"#cname></td> 
+      <td><input class="form-control" placeholder="date"#date></td>
+      <td><input class="form-control" placeholder="location"#location></td>
+
+      <td><input class="btn btn-default" type = "submit" value="Add"></td> 
+    </tr>
+  </form>
+
+</div>
+
+<h3>Assign Participant to course</h3>
+<div class="form-group">
+    <form (submit)="addNewParticipantToTraining({trainingId:tid.value,participantId:pid.value})">
+        <tr >
+            <!-- <select>
+                <option *ngFor="let t of trainings; let i = index" value="{{t.trainingId}}">{{t.coursename}}</option>
+                </select>
+                <select>
+                    <option *ngFor="let p of participants; let i = index" value="{{p.participantId}}">{{p.name}}</option>
+                </select> -->
+          <td><input class="form-control" placeholder="trainingId"#tid></td> 
+          <td><input class="form-control" placeholder="participantId"#pid></td>
+
+          <td><input class="btn btn-default" type = "submit" value="Add"></td> 
+        </tr>
+      </form>
+    
+      </div>

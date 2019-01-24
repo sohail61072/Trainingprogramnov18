@@ -1,0 +1,26 @@
+<h1>Participant Details</h1>
+
+<table  class= "table table-hover">
+  <tr>
+    <th>Participant ID</th>
+    <th>Name</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let pa of participants; let i = index">
+    <td>{{pa.participantId}}</td>
+    <td>{{pa.name}}</td>
+    <td><button class="btn btn-danger" (click)="deleteParticipant(pa.participantId)">x</button></td>
+</table>
+
+
+<h3> Add Participants</h3>
+ <div form-group>
+<form (submit)="addNewParticipant({participantId:0,name:name.value})">
+    <tr>
+      <td><input  class="form-control" placeholder="name"#name></td> 
+
+
+      <td><input class="btn btn-default" type = "submit" value="Add"></td> 
+    </tr>
+  </form>
+  </div>
